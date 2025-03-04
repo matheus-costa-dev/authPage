@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { auth, db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify/unstyled";
-import ContainerProfile from "./components/ContainerProfile"
+import ContainerProfile from "../components/ContainerProfile"
 import { useNavigate } from "react-router-dom";
 
 function Profile() {
@@ -68,7 +68,7 @@ function Profile() {
                         title={userDetails.firstName}
                         description={userDetails.lastName}
                         buttonText={userDetails.email}
-                        onButtonClick={() => { `mailto:${userDetails.email}` }}
+                        onButtonClick={() => { window.location.href = ` mailto:${userDetails.email}` }}
                     />
 
 
