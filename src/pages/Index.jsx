@@ -1,14 +1,16 @@
 import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useNavigate } from 'react-router-dom'
 
 const navigation = [
   { name: 'Login', href: '/signin' },
-  { name: 'Cadastrar', href: '//signout' },
+  { name: 'Cadastrar', href: '/signup' },
 ]
 
 export default function Index() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const navigate = useNavigate();
 
   return (
     <div className="bg-white">
@@ -36,16 +38,12 @@ export default function Index() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-gray-900">
+              <a key={item.name} onClick={() => navigate(item.href)} className="text-sm/6 font-semibold text-gray-900">
                 {item.name}
               </a>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a href="#" className="text-sm/6 font-semibold text-gray-900">
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+          
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 z-50" />
@@ -74,21 +72,14 @@ export default function Index() {
                   {navigation.map((item) => (
                     <a
                       key={item.name}
-                      href={item.href}
+                      onClick={() => navigate(item.href)}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}
                     </a>
                   ))}
                 </div>
-                <div className="py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                  >
-                    Log in
-                  </a>
-                </div>
+               
               </div>
             </div>
           </DialogPanel>
