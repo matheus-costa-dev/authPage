@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { auth } from "../../firebase";
 import { ToastContainer, toast } from 'react-toastify';
+import Nav  from '../../components/Nav.jsx'
+
 
 function SignIn() {
 
@@ -16,24 +18,24 @@ function SignIn() {
         if (email && password) {
 
             try {
-                
-               await signInWithEmailAndPassword(auth, email, password)
-               console.log("Usuário logado")
-               toast.success("Usuário logado com sucesso", {position:"top-center"})
 
-               navigate("/loged")
-                
+                await signInWithEmailAndPassword(auth, email, password)
+                console.log("Usuário logado")
+                toast.success("Usuário logado com sucesso", { position: "top-center" })
+
+                navigate("/main")
+
             } catch (error) {
                 console.log(error)
-                toast.error("Usuário não encontrado", {position:"top-center"})
+                toast.error("Usuário não encontrado", { position: "top-center" })
 
-            }   
+            }
 
             return setAlert(false)
-        
+
         }
 
-        
+
 
         return setAlert(true)
     }
@@ -42,7 +44,7 @@ function SignIn() {
 
         <div
             className=" flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-
+            <Nav />
 
 
             <div

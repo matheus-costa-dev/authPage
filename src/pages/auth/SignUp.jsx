@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom"
 import { auth, db } from "../../firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { ToastContainer, toast } from 'react-toastify';
+import Nav  from '../../components/Nav.jsx'
+
 
 function SignUp() {
 
@@ -34,13 +36,13 @@ function SignUp() {
                 }
 
                 console.log("user registrado")
-                toast.success("Usuário registrado com sucesso", {position:"top-center"})
-                
+                toast.success("Usuário registrado com sucesso", { position: "top-center" })
+
                 navigate("/signin")
 
             } catch (error) {
                 console.log(error.message)
-                toast.error("Email já cadastrado", {position:"top-center"})
+                toast.error("Email já cadastrado", { position: "top-center" })
 
             }
 
@@ -51,6 +53,8 @@ function SignUp() {
     return (
         <div
             className=" flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+            <Nav />
+
             <div
                 className="sm:mx-auto sm:w-full sm:max-w-sm">
                 <img
@@ -105,7 +109,7 @@ function SignUp() {
                 <button
                     className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     onClick={onHandleClickSignIn}
-                >Sign in
+                >Sign Up
 
                 </button>
 

@@ -4,10 +4,10 @@ import { doc, getDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify/unstyled";
 import ContainerProfile from "../components/ContainerProfile"
 import { useNavigate } from "react-router-dom";
+import NavClient from "../components/NavClient";
 
 function Profile() {
     const [userDetails, setUserDetails] = useState(false)
-    const navigate = useNavigate();
 
     useEffect(() => {
         fetchUserData()
@@ -40,29 +40,15 @@ function Profile() {
     }
 
 
-    async function onHandleClickLogout() {
-        try {
-            await auth.signOut();
-            navigate("/signin")
-        } catch (error) {
-            console.log(error)
-            toast.error("Não foi possivel fazer o logout")
-        }
-    }
-
-
 
     return (
         <div className="h-screen flex flex-col justify-center items-center shadow gap-6 bg-cyan-100" >
+            <NavClient />
 
             {userDetails ? (
 
-                <div>
+                <div className="flex flex-col items-center justify-center"> {/* Added centering classes */}
 
-
-                    <button
-                        className="text-white font-bold p-3 rounded-md text-1xl bg-red-400 mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto"
-                        onClick={onHandleClickLogout}> LogOut </button>
 
                     <ContainerProfile
                         title={userDetails.firstName}
